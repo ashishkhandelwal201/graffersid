@@ -31,4 +31,4 @@ import reviewsModel from '../model/review.model.js'
 
 
 
-export {express , bcrypt , userController , userModel  , util , mysql , jwt , generateAccessToken , generateRefreshToken , verifyAuth , cookieParser , dirname ,path ,fileURLToPath , mongoose , companiesController , companiesModel , fileUpload , reviewsController , reviewsModel }
+export {express , env , bcrypt , userController , userModel  , util , mysql , jwt , generateAccessToken , generateRefreshToken , verifyAuth , cookieParser , dirname ,path ,fileURLToPath , mongoose , companiesController , companiesModel , fileUpload , reviewsController , reviewsModel }
