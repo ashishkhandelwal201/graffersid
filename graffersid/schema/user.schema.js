@@ -4,48 +4,24 @@ import { mongoose  } from '../utils/import.js'
 const userSchema = mongoose.Schema({
 
     _id : Number,
-   
+    name : {
+        type : String,
+        required : [true,"Name is required"],
+        
+        trim : true
+    },
     username : {
         type : String,
         required : [true,"User Name is required"],
-        unique : true,
-        lowercase : true,
+        
         trim : true
     },
     password : {
         type : String,
         required : [true , "Password is required"],
-        maxlength : 10,
-        minlength : 4,
         trim : true
     },
-    email:{
-        type : String,
-        required : [true , "email is required"],
-        lowercase : true,
-        trim : true
-    },
-    mobile : {
-        type : Number,
-        required : [true , "Mobile is required"],
-        maxlength : 10,
-        minlength : 10,
-        trim : true
-    },
-    address:{
-        type : String,
-        required : [true , "Company Address is required"],
-        trim : true
-    },
-    city:{
-        type : String,
-        required : [true , "City is required"],
-        trim : true
-    },
-    logopath : {
-        type : String,
-        trim : true
-    },
+  
     role : {
         type : String,
         required : true,
@@ -55,11 +31,7 @@ const userSchema = mongoose.Schema({
         type : Number,
         trim : true
     },
-    status : {
-        type : Number,
-        required : true,
-        trim : true
-    },
+   
     info : {
         type : Date,
         required : true,
