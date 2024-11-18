@@ -69,7 +69,8 @@ const verifyAuth = async(req,res,next) => {
         console.log(`error in auth ${er}`)
         response.status = 500
         response.message = `Internal server error`
-        return res.json(response)        
+        return res.redirect('/login')
+        // return res.json(response)
     }
 
 }
