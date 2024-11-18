@@ -8,7 +8,9 @@ class UserController{
   }
 
   
-
+  getSignup(req,res){
+    res.render('signup')
+  }
     async postLogin(req,res){
         const username = req.body.username ? req.body.username : ""
         const password = req.body.password ? req.body.password : ""
@@ -82,7 +84,9 @@ class UserController{
           let hashedPass = await bcrypt.hash(password , 10)
           let usersList = await userModel.fetchUsers()
           const user_id =  usersList.length > 0 ? usersList.length+1 : 1
-          input = { ...input , id : user_id ,  password : hashedPass , role : "user" , is_deleted : 0}
+          input = { ...input , _id : user_id ,  password : hashedPass , role : "user" , isdeleted : 0 , info : new Date().toISOString().split('T')[0] }
+          console.log(`just below`)
+          console.log(input)
           const addUserAck = await userModel.insertUser(input)
           if(!addUserAck){
               response.status = "ERROR"
@@ -91,12 +95,12 @@ class UserController{
           }
           console.log(`Signup successfully : ${JSON.stringify(addUserAck)}`)
           let payload = {
-              id: addUserAck.insertId,
+              id: addUserAck._id,
               email: input.username,
               name: input.name,
               role: input.role,
               type: "Bearer",
-              status: input.status,
+              status: 1,
             };
             const accessToken =  generateAccessToken(payload)
             const refreshToken =  generateRefreshToken({
